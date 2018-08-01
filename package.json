@@ -1,8 +1,8 @@
 {
-  "author": "George Heeres <gheeres@gmail.com>",
-  "name": "activedirectory",
-  "version": "0.7.2",
-  "description": "ActiveDirectory is an ldapjs client for authN (authentication) and authZ (authorization) for Microsoft Active Directory with range retrieval support for large Active Directory installations.",
+  "author": "Relief Melone (relief.melone@gmail.com)",
+  "name": "active-directory",
+  "version": "0.0.1",
+  "description": "This is a fork of the gheeres node-activedirectory. This is still a work in progress and not stable. The goal to use promises instead of the async library which is causing some problems in the current version of node-activedirectory",
   "main": "index.js",
   "directories": {
     "lib": "./lib"
@@ -12,7 +12,8 @@
   },
   "keywords": [
     "ldap",
-    "active directory"
+    "active directory",
+    "activedirectory"
   ],
   "bugs": {
     "url": "https://github.com/gheeres/node-activedirectory/issues"
