@@ -1,5 +1,9 @@
-ActiveDirectory for Node
+ActiveDirectory-P for Node
 =========
+
+ActiveDirectoryP is a fork of the great module node-activedirectory by gheery. In addition to that I stripped out the need of the async library (which always crashed in my environment if I was dealin with a lot of simultaneaously requests). In addition all the methods described downwards can not only be used with a callback, but will also return a promise. If you already use the original module you should be able to use this module aswell without having to adjustice anything. This module is still in testing. I would be happy if you would post any issues you might find so they can be corrected.
+
+Now to the original Readme with some additions on how to use the promises alternatively (of course you can also use await I just wrote down the way with .then())
 
 ActiveDirectory is an ldapjs client for authN (authentication) and authZ (authorization) for Microsoft Active Directory with range retrieval support for large Active Directory installations. This code was a port of an existing C# library (not published) that I had written a few years ago. Here are the key features
 
@@ -79,6 +83,7 @@ var ad = new ActiveDirectory(config);
 var username = 'john.smith@domain.com';
 var password = 'password';
 
+//With callback;
 ad.authenticate(username, password, function(err, auth) {
   if (err) {
     console.log('ERROR: '+JSON.stringify(err));
@@ -91,6 +96,14 @@ ad.authenticate(username, password, function(err, auth) {
   else {
     console.log('Authentication failed!');
   }
+});
+
+// With Prmomise 
+
+ad.authenticate.then((res) => {
+  console.log('Authenticated')
+}, (err) => {
+  console.log('Authentication failed);
 });
 ```
 
@@ -142,6 +155,8 @@ __Example__
 var groupName = 'Employees';
 
 var ad = new ActiveDirectory(config);
+
+//Using a callback
 ad.groupExists(groupName, function(err, exists) {
   if (err) {
     console.log('ERROR: ' +JSON.stringify(err));
@@ -149,6 +164,13 @@ ad.groupExists(groupName, function(err, exists) {
   }
 
   console.log(groupName + ' exists: ' + exists);
+});
+
+//Using a Promise
+ad.groupExists(groupName).then(exists => {
+  console.log(groupName + ' exists: ' + exists);
+}, err => {
+  console.log('ERROR: ' + JSON.stringify(err));
 });
 ```
 
@@ -170,6 +192,8 @@ __Example__
 var username = 'john.smith@domain.com';
 
 var ad = new ActiveDirectory(config);
+
+//Using a Callback
 ad.userExists(username, function(err, exists) {
   if (err) {
     console.log('ERROR: ' +JSON.stringify(err));
@@ -178,6 +202,13 @@ ad.userExists(username, function(err, exists) {
 
   console.log(username + ' exists: ' + exists);
 });
+
+//Using a Promise
+ad.userExists(username).then(exists => {
+  console.log(username + ' exists: ' + exists);
+}, err => {
+  console.log('ERROR: ' + JSON.stringify(err));
+})
 ```
 
 ---------------------------------------
@@ -198,6 +229,8 @@ __Example__
 var groupName = 'Employees';
 
 var ad = new ActiveDirectory(config);
+
+//Using a Callback
 ad.getUsersForGroup(groupName, function(err, users) {
   if (err) {
     console.log('ERROR: ' +JSON.stringify(err));
@@ -209,6 +242,14 @@ ad.getUsersForGroup(groupName, function(err, users) {
     console.log(JSON.stringify(users));
   }
 });
+
+//Using a Promise
+ad.getUsersForGroup(gorupName).then(users => {
+  console.log(JSON.stringify(users));
+}, err => {
+  console.log('ERROR: ' + JSON.stringify(err));
+});
+
 ```
 
 
