@@ -29,7 +29,7 @@ Installation
 --------------
 
 ```sh
-npm install activedirectory
+npm install ad-promise
 ```
 
 Usage
