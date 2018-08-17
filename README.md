@@ -1,7 +1,7 @@
-ActiveDirectory-P for Node
+AD-Promise for Node
 =========
 
-ActiveDirectoryP is a fork of the great module node-activedirectory by gheery. In addition to that I stripped out the need of the async library (which always crashed in my environment if I was dealin with a lot of simultaneaously requests). In addition all the methods described downwards can not only be used with a callback, but will also return a promise. If you already use the original module you should be able to use this module aswell without having to adjustice anything. This module is still in testing. I would be happy if you would post any issues you might find so they can be corrected.
+AD-Promise is a fork of the great module node-activedirectory by gheery. In addition to that I stripped out the need of the async library (which always crashed in my environment if I was dealin with a lot of simultaneaously requests). In addition all the methods described downwards can not only be used with a callback, but will also return a promise. If you already use the original module you should be able to use this module aswell without having to adjustice anything. This module is still in testing. I would be happy if you would post any issues you might find so they can be corrected.
 
 Now to the original Readme with some additions on how to use the promises alternatively (of course you can also use await I just wrote down the way with .then())
 
@@ -271,6 +271,8 @@ __Example__
 var sAMAccountName = 'john.smith@domain.com';
 
 var ad = new ActiveDirectory(config);
+
+//Using a Callback
 ad.getGroupMembershipForUser(sAMAccountName, function(err, groups) {
   if (err) {
     console.log('ERROR: ' +JSON.stringify(err));
@@ -280,6 +282,13 @@ ad.getGroupMembershipForUser(sAMAccountName, function(err, groups) {
   if (! groups) console.log('User: ' + sAMAccountName + ' not found.');
   else console.log(JSON.stringify(groups));
 });
+
+//Using a Promise
+ad.getGroupMembershitForUser(SAMAccountName).then(groups => {
+  console.log(JSON.stringify(groups));
+}, err => {
+  console.log('ERROR: ' + JSOBN.stringify(err));
+})
 ```
 
 ---------------------------------------
@@ -300,6 +309,8 @@ __Example__
 var groupName = 'Employees';
 
 var ad = new ActiveDirectory(config);
+
+//Using a Callback
 ad.getGroupMembershipForGroup(groupName, function(err, groups) {
   if (err) {
     console.log('ERROR: ' +JSON.stringify(err));
@@ -308,6 +319,14 @@ ad.getGroupMembershipForGroup(groupName, function(err, groups) {
 
   if (! groups) console.log('Group: ' + groupName + ' not found.');
   else console.log(JSON.stringify(groups));
+});
+
+//Using a Promise
+
+ad.getGroupMembershipForGroup(groupname).then(groups => {
+  console.log(JSON.stringify(groups));
+}, err => {
+  console.log('ERROR: ' + JSON.stringify(err));
 });
 ```
 
