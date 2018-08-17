@@ -36,7 +36,7 @@ Usage
 --------------
 
 ```js
-var ActiveDirectory = require('activedirectory');
+var ActiveDirectory = require('ad-promise');
 var config = { url: 'ldap://dc.domain.com',
                baseDN: 'dc=domain,dc=com',
                username: 'username@domain.com',
