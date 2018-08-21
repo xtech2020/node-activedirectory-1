@@ -21,7 +21,8 @@
   "dependencies": {
     "bunyan": "^2.0.2",
     "ldapjs": ">= 0.7.1",
-    "underscore": ">= 1.4.3"
+    "underscore": ">= 1.4.3",
+    "limitpromises": ">=1.0.1"
   },
   "repository": {
     "type": "git",
