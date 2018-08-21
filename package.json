@@ -1,7 +1,7 @@
 {
   "author": "Relief Melone (relief.melone@gmail.com)",
   "name": "ad-promise",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "This is a fork of the gheeres node-activedirectory. This is still a work in progress and not stable. The goal to use promises instead of the async library which is causing some problems in the current version of node-activedirectory",
   "main": "index.js",
   "directories": {
