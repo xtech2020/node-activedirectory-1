@@ -23,6 +23,7 @@ ActiveDirectory uses the following additional node modules:
 * [underscore] - a utility-belt library for JavaScript that provides a lot of the functional programming support
 * [ldapjs] - A pure JavaScript, from-scratch framework for implementing LDAP clients and servers in Node.js
 * [bunyan](https://github.com/trentm/node-bunyan) - A simple and fast JSON logging module for node.js services
+* [limitpromises](https://github.com/relief-melone/limitpromises) - lightweight module for making sure you only run a limited number of promises at once
 
 Installation
 --------------
