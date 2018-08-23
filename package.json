@@ -1,7 +1,7 @@
 {
   "author": "Relief Melone (relief.melone@gmail.com)",
   "name": "ad-promise",
-  "version": "1.0.11",
+  "version": "1.1.0",
   "description": "This is a fork of the gheeres node-activedirectory. This is still a work in progress and not stable. The goal to use promises instead of the async library which is causing some problems in the current version of node-activedirectory",
   "main": "index.js",
   "directories": {
@@ -22,7 +22,7 @@
     "bunyan": "^2.0.2",
     "ldapjs": ">= 0.7.1",
     "underscore": ">= 1.4.3",
-    "limitpromises": ">=1.0.5"
+    "limitpromises": ">=1.0.6"
   },
   "repository": {
     "type": "git",
