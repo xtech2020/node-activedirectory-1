@@ -23,7 +23,9 @@ ActiveDirectory uses the following additional node modules:
 * [underscore] - a utility-belt library for JavaScript that provides a lot of the functional programming support
 * [ldapjs] - A pure JavaScript, from-scratch framework for implementing LDAP clients and servers in Node.js
 * [bunyan](https://github.com/trentm/node-bunyan) - A simple and fast JSON logging module for node.js services
-* [limitpromises](https://github.com/relief-melone/limitpromises) - lightweight module for making sure you only run a limited number of promises at once
+* [limitpromises](https://github.com/relief-melone/limitpromises) - lightweight module for making sure you only run a limited number 
+of promises at once. Originally the async library was used instead of limitpromises. But as it does not limit how many async calls
+will be made at once which will make you run into problems if you have very larger AD-Groups (10k+ users)
 
 Installation
 --------------
@@ -62,6 +64,7 @@ Documentation
 * [getUsersForGroup](#getUsersForGroup)
 * [getRootDSE](#getRootDSE)
 * [findDeletedObjects](#findDeletedObjects)
+* [maxSearchesAtOnce](#maxSearchesAtOnce)
 
 ---------------------------------------
 
@@ -746,6 +749,25 @@ var opts = {
     callback(entry);  
   }
 };
+```
+
+<a name="authenticate" />
+### maxSearchesAtOnce
+
+Originally node-activedirectory does not limit how many searches will be sent via LDAP parallel. This will cause problems with
+very large AD-Groups (10k+ users). ad-promise will limit this to 200 searches which seems to be a good trade off between performance
+and stability. You can however change this value if you want to. You can set the parameter like this
+
+```js
+var ActiveDirectory = require('ad-promise');
+var config = { 
+  url: 'ldap://dc.domain.com',
+  baseDN: 'dc=domain,dc=com',
+  username: 'username@domain.com',
+  password: 'password',
+  maxSearchesAtOnce: 3000  
+}
+var ad = new ActiveDirectory(config);
 ```
 
 ------------------------------------------------
