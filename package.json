@@ -1,8 +1,8 @@
 {
   "author": "Relief Melone (relief.melone@gmail.com)",
   "name": "ad-promise",
-  "version": "1.2.0",
-  "description": "This is a fork of the gheeres node-activedirectory. This is still a work in progress and not stable. The goal to use promises instead of the async library which is causing some problems in the current version of node-activedirectory",
+  "version": "1.3.0",
+  "description": "This is a fork of the gheeres node-activedirectory. It fixes some issues with timeouts with very large AD-Groups as well as returning also promises so you won't have to use callbacks",
   "main": "index.js",
   "directories": {
     "lib": "./lib"
