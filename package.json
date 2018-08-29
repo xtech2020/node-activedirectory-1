@@ -1,7 +1,7 @@
 {
   "author": "Relief Melone (relief.melone@gmail.com)",
   "name": "ad-promise",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "This is a fork of the gheeres node-activedirectory. It fixes some issues with timeouts with very large AD-Groups as well as returning also promises so you won't have to use callbacks",
   "main": "index.js",
   "directories": {
@@ -22,7 +22,7 @@
     "bunyan": "^2.0.2",
     "ldapjs": ">= 0.7.1",
     "underscore": ">= 1.4.3",
-    "limitpromises": ">=1.5.2"
+    "limitpromises": ">=1.5.3"
   },
   "repository": {
     "type": "git",
