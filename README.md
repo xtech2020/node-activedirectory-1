@@ -477,15 +477,17 @@ Perform a generic search for users that match the specified filter. The default 
 specified as (&(|(objectClass=user)(objectClass=person))(!(objectClass=computer))(!(objectClass=group)))
 
 __Arguments__
-* opts - Optional parameters to extend or override functionality. See [optional parameters](#opts). If only a string is provided, then the string is assumed to be an LDAP filter that will be appended as the last parameter in the default LDAP filter.
+* opts - Optional parameters to extend or override functionality. See [optional parameters](#opts). If only a string is provided, then the string is assumed to be an LDAP filter that will be appended as the last parameter in the default LDAP filter. If an Array is provided, AD-Promise will assume its multiple sAMAccountNames.
 * callback - The callback to execute when completed. callback(err: {Object}, users: {Array[User]})
 
 __Example__
 
 ```js
-var query = 'cn=*George*';
+let query = 'cn=*George*';
+let usernames = ["username1", "username2"]; 
 
-var ad = new ActiveDirectory(config);
+const ad = new ActiveDirectory(config);
+// Working with a query
 ad.findUsers(query, function(err, users) {
   if (err) {
     console.log('ERROR: ' +JSON.stringify(err));
@@ -497,6 +499,19 @@ ad.findUsers(query, function(err, users) {
     console.log('findUsers: '+JSON.stringify(users));
   }
 });
+// Working with an array of usernames
+ad.findUsers(usernames, function(err, users) {
+  if (err) {
+    console.log('ERROR: ' +JSON.stringify(err));
+    return;
+  }
+
+  if ((! users) || (users.length == 0)) console.log('No users found.');
+  else {
+    console.log('findUsers: '+JSON.stringify(users));
+  }
+});
+
 ```
 
 ---------------------------------------
