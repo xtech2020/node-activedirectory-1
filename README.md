@@ -293,7 +293,7 @@ ad.getGroupMembershipForUser(sAMAccountName, function(err, groups) {
 });
 
 //Using a Promise
-ad.getGroupMembershitForUser(SAMAccountName).then(groups => {
+ad.getGroupMembershipForUser(SAMAccountName).then(groups => {
   console.log(JSON.stringify(groups));
 }, err => {
   console.log('ERROR: ' + JSOBN.stringify(err));
