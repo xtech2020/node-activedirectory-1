@@ -46,7 +46,22 @@ var config = { url: 'ldap://dc.domain.com',
 var ad = new ActiveDirectory(config);
 ```
 
-The username and password specified in the configuration are what are used for user and group lookup operations.
+The username and password specified in the configuration are what are used for user and group lookup operations. You can also specify different baseDNs for user and group
+(e.g. you have organisiation units in your root ou apart from groups and users and don't want to include them in your search). You can either set user, group or both,
+but you will need to supply a default baseDN
+
+```js
+var ActiveDirectory = require('ad-promise');
+var config = { url: 'ldap://dc.domain.com',
+               baseDNs: {
+                  user : 'ou=user,ou=someroot,dc=domain,dc=com',
+                  group : 'ou=group,ou=someroot,dc=domain,dc=com',
+                  default : 'ou=someroot,dc=domain,dc=com'
+               }
+               username: 'username@domain.com',
+               password: 'password' }
+var ad = new ActiveDirectory(config);
+```
 
 Documentation
 --------------
